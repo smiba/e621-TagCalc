@@ -133,7 +133,7 @@ namespace e621_Tag_Calc
                         i++;
                     } while (i < FavoriteResults.Count);
 
-                    if (FavoriteResults.Count < 100)
+                    if (FavoriteResults.Count < 75)
                     {
                         stop = true;
                     }
