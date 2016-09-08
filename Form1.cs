@@ -96,7 +96,14 @@ namespace e621_Tag_Calc
                     client.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0"); //e621 blocks empty User-Agents (?)
                     string downloadstring = "https://e621.net/post/index.json?tags=fav:" + UsernameTxtbox.Text + "&page=" + page;
                     Debug.WriteLine(downloadstring);
-                    jsoncode = client.DownloadString(downloadstring);
+                    try
+                    {
+                        jsoncode = client.DownloadString(downloadstring);
+                    }
+                    catch (WebException e)
+                    {
+                        MessageBox.Show("An error has occured while receiving the data:" + Environment.NewLine + e.GetBaseException(), "I'm sorry but..", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 try
                 {
